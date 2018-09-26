@@ -7,22 +7,36 @@ public class addall {
 		
 		for (int i = 0 ; i < T ; i++) {
 			int N = scanner.nextInt();
-			int[] nums = new int[N];
+			PriorityQueue<Long> nums = new PriorityQueue<>();
 			
 			for (int j = 0 ; j < N ; j++) {
-				nums[j] = scanner.nextInt();
+				nums.offer(scanner.nextLong());
 			}
 			
-			int sum = 0;
+			long sum = 0;
+			long curr;
 			
-			
-			Arrays.sort(nums);
-			
-			while(nums.length > 1) {
-				
-				
-				Arrays.sort(nums);
+			while(nums.size() > 1) {
+				curr = nums.poll() + nums.poll();
+				sum += curr;
+				nums.offer(curr);
 			}
+			
+			System.out.println(sum);
 		}
 	}
 }	
+
+
+/*
+2
+3
+1 2 3
+4 
+1 2 3 4
+
+1
+1
+100
+
+*/
